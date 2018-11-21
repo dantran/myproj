@@ -1,0 +1,124 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.5.17.RELEASE</version>
+  </parent>
+
+  <groupId>com.mycomp.myproj</groupId>
+  <artifactId>myproj</artifactId>
+  <version>1.0-SNAPSHOT</version>
+
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>common</module>
+    <module>app</module>
+    <module>mvnrepo</module>
+  </modules>
+
+
+  <properties>
+    <thin.boot.version>1.0.17.RELEASE</thin.boot.version>
+  </properties>
+
+  <dependencyManagement>
+    <dependencies>
+
+      <dependency>
+        <groupId>com.mycomp.myproj</groupId>
+        <artifactId>myproj-common</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.mycomp.myproj</groupId>
+        <artifactId>myproj-app</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.apache.zookeeper</groupId>
+        <artifactId>zookeeper</artifactId>
+        <version>3.4.10</version>
+        <exclusions>
+          <!-- revisit this list on the next upgrade -->
+          <exclusion>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+          </exclusion>
+          <exclusion>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+          </exclusion>
+          <exclusion>
+            <!--ZOOKEEPER-1249 -->
+            <groupId>jline</groupId>
+            <artifactId>jline</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
+    </dependencies>
+
+  </dependencyManagement>
+
+  <build>
+
+    <defaultGoal>install</defaultGoal>
+
+    <plugins>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+        <version>1.0.1</version>
+        <configuration>
+          <updatePomFile>true</updatePomFile>
+          <outputDirectory>${project.build.directory}</outputDirectory>
+        </configuration>
+        <executions>
+          <!-- this causes thin:classpath to pull in zookeeper's exclusions jar. and DOA myproj-app -->
+          <execution>
+            <id>flatten</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>flatten</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.springframework.boot.experimental</groupId>
+          <artifactId>spring-boot-thin-maven-plugin</artifactId>
+          <version>${thin.boot.version}</version>
+          <configuration>
+            <outputDirectory>${project.build.outputDirectory}/META-INF</outputDirectory> <!-- for thin:properties -->
+          </configuration>
+          <executions>
+            <execution>
+              <id>generate-thin-properties</id>
+              <goals>
+                <goal>properties</goal>
+              </goals>
+              <configuration>
+                <outputDirectory>${project.build.outputDirectory}/META-INF</outputDirectory>
+              </configuration>
+            </execution>
+          </executions>
+        </plugin>
+
+      </plugins>
+    </pluginManagement>
+  </build>
+
+</project>
