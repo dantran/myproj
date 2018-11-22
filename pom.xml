@@ -81,10 +81,13 @@
         <configuration>
           <updatePomFile>true</updatePomFile>
           <outputDirectory>${project.build.directory}</outputDirectory>
+          <!-- must have in order for thin.properties and thin.classpath the produce same list -->
+          <!-- but this forces every sub maven module pom.xml to dependencyManagement from parent-->
+          <!--
           <pomElements>
-            <!-- must have in order for thin.properties and thin.classpath the produce same list -->
             <dependencyManagement>expand</dependencyManagement>
           </pomElements>
+          -->
         </configuration>
         <executions>
           <!-- this causes thin:classpath to pull in zookeeper's exclusions jar. and DOA myproj-app -->
