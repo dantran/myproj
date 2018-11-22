@@ -17,12 +17,13 @@
   <modules>
     <module>common</module>
     <module>app</module>
+    <module>app-with-common-classifier</module>
     <module>mvnrepo</module>
   </modules>
 
 
   <properties>
-    <thin.boot.version>1.0.17.RELEASE</thin.boot.version>
+    <thin.boot.version>1.0.18.BUILD-SNAPSHOT</thin.boot.version>
   </properties>
 
   <dependencyManagement>
@@ -32,6 +33,12 @@
         <groupId>com.mycomp.myproj</groupId>
         <artifactId>myproj-common</artifactId>
         <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.mycomp.myproj</groupId>
+        <artifactId>myproj-common</artifactId>
+        <version>${project.version}</version>
+        <classifier>duplicate</classifier>
       </dependency>
       <dependency>
         <groupId>com.mycomp.myproj</groupId>
@@ -69,6 +76,14 @@
 
   </dependencyManagement>
 
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
   <build>
 
     <defaultGoal>install</defaultGoal>
@@ -82,11 +97,11 @@
           <updatePomFile>true</updatePomFile>
           <outputDirectory>${project.build.directory}</outputDirectory>
           <!-- must have in order for thin.properties and thin.classpath the produce same list -->
-          <!-- but this forces every sub maven module pom.xml to dependencyManagement from parent-->
+          <!-- but this forces every sub maven module pom.xml to dependencyManagement from parent -->
           <!--
-          <pomElements>
+            <pomElements>
             <dependencyManagement>expand</dependencyManagement>
-          </pomElements>
+            </pomElements>
           -->
         </configuration>
         <executions>
