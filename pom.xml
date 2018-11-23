@@ -19,6 +19,7 @@
     <module>app</module>
     <module>app-with-common-classifier</module>
     <module>mvnrepo</module>
+    <module>no-spring</module>
   </modules>
 
 
@@ -38,7 +39,13 @@
         <groupId>com.mycomp.myproj</groupId>
         <artifactId>myproj-common</artifactId>
         <version>${project.version}</version>
-        <classifier>duplicate</classifier>
+        <classifier>duplicate1</classifier>
+      </dependency>
+      <dependency>
+        <groupId>com.mycomp.myproj</groupId>
+        <artifactId>myproj-common</artifactId>
+        <version>${project.version}</version>
+        <classifier>duplicate2</classifier>
       </dependency>
       <dependency>
         <groupId>com.mycomp.myproj</groupId>

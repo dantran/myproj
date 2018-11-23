@@ -8,26 +8,22 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>myproj-app-with-common-classifier</artifactId>
+  <artifactId>myproj-no-spring</artifactId>
 
   <dependencies>
     <dependency>
-      <groupId>com.mycomp.myproj</groupId>
-      <artifactId>myproj-common</artifactId>
-      <classifier>duplicate1</classifier>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.mycomp.myproj</groupId>
-      <artifactId>myproj-common</artifactId>
-      <classifier>duplicate2</classifier>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
+      <groupId>ch.qos.logback</groupId>
+      <artifactId>logback-classic</artifactId>
+      <scope>runtime</scope>
     </dependency>
   </dependencies>
 
   <build>
+
     <plugins>
       <plugin>
         <groupId>org.springframework.boot.experimental</groupId>
@@ -55,8 +51,12 @@
             <version>${thin.boot.version}</version>
           </dependency>
         </dependencies>
+        <configuration>
+          <mainClass>mycomp.nospring.Main</mainClass>
+        </configuration>
       </plugin>
     </plugins>
+
   </build>
 
 </project>

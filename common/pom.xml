@@ -33,7 +33,11 @@
               <artifacts>
                 <artifact>
                   <file>${project.build.directory}/${project.build.finalName}.jar</file>
-                  <classifier>duplicate</classifier>
+                  <classifier>duplicate1</classifier>
+                </artifact>
+                <artifact>
+                  <file>${project.build.directory}/${project.build.finalName}.jar</file>
+                  <classifier>duplicate2</classifier>
                 </artifact>
               </artifacts>
             </configuration>

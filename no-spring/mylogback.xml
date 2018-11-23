@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration debug="false" scan="true" scanPeriod="120 seconds">
+
+  <!-- shut off initial logback logger -->
+  <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+    <file>target/nospring.log</file>
+
+  </appender>
+
+  <root level="INFO">
+    <appender-ref ref="FILE" />
+  </root>
+
+
+</configuration>
