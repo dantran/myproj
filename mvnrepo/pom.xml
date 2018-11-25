@@ -17,6 +17,11 @@
       <artifactId>myproj-app</artifactId>
       <optional>false</optional>
     </dependency>
+    <dependency>
+      <groupId>com.mycomp.myproj</groupId>
+      <artifactId>myproj-app-with-classifiers</artifactId>
+      <optional>true</optional>
+    </dependency>
   </dependencies>
 
   <properties>
@@ -30,6 +35,16 @@
         <artifactId>spring-boot-thin-maven-plugin</artifactId>
         <executions>
           <execution>
+            <id>generate-thin-properties</id>
+            <goals>
+              <goal>properties</goal>
+            </goals>
+            <configuration>
+              <!-- skip the global goal defined at top pom.xml -->
+              <skip>true</skip>
+            </configuration>
+          </execution>
+          <execution>
             <id>resolve</id>
             <phase>prepare-package</phase>
             <goals>
@@ -41,6 +56,11 @@
                 <deployable>
                   <groupId>com.mycomp.myproj</groupId>
                   <artifactId>myproj-app</artifactId>
+                  <version>${project.version}</version>
+                </deployable>
+                <deployable>
+                  <groupId>com.mycomp.myproj</groupId>
+                  <artifactId>myproj-app-with-classifiers</artifactId>
                   <version>${project.version}</version>
                 </deployable>
               </deployables>

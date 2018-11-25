@@ -17,7 +17,7 @@
   <modules>
     <module>common</module>
     <module>app</module>
-    <module>app-with-common-classifier</module>
+    <module>app-with-classifiers</module>
     <module>mvnrepo</module>
     <module>no-spring</module>
   </modules>
@@ -52,7 +52,11 @@
         <artifactId>myproj-app</artifactId>
         <version>${project.version}</version>
       </dependency>
-
+      <dependency>
+        <groupId>com.mycomp.myproj</groupId>
+        <artifactId>myproj-app-with-classifiers</artifactId>
+        <version>${project.version}</version>
+      </dependency>
       <dependency>
         <groupId>org.apache.zookeeper</groupId>
         <artifactId>zookeeper</artifactId>
@@ -127,12 +131,21 @@
     <pluginManagement>
       <plugins>
         <plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <dependencies>
+            <!-- The following enables the "thin jar" deployment option. -->
+            <dependency>
+              <groupId>org.springframework.boot.experimental</groupId>
+              <artifactId>spring-boot-thin-layout</artifactId>
+              <version>${thin.boot.version}</version>
+            </dependency>
+          </dependencies>
+        </plugin>
+        <plugin>
           <groupId>org.springframework.boot.experimental</groupId>
           <artifactId>spring-boot-thin-maven-plugin</artifactId>
           <version>${thin.boot.version}</version>
-          <configuration>
-            <outputDirectory>${project.build.outputDirectory}/META-INF</outputDirectory> <!-- for thin:properties -->
-          </configuration>
           <executions>
             <execution>
               <id>generate-thin-properties</id>

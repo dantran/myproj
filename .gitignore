@@ -4,6 +4,7 @@
 .idea
 *.iml
 #maven
+.repository/
 target
 .mvn/timing.properties
 .mvn/wrapper/maven-wrapper.jar

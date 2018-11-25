@@ -8,7 +8,7 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>myproj-app-with-common-classifier</artifactId>
+  <artifactId>myproj-app-with-classifiers</artifactId>
 
   <dependencies>
     <dependency>
@@ -32,29 +32,13 @@
       <plugin>
         <groupId>org.springframework.boot.experimental</groupId>
         <artifactId>spring-boot-thin-maven-plugin</artifactId>
-        <executions>
-          <execution>
-            <id>generate-thin-properties</id>
-            <goals>
-              <goal>properties</goal>
-            </goals>
-            <configuration>
-              <outputDirectory>${project.build.outputDirectory}/META-INF</outputDirectory>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
-        <dependencies>
-          <!-- The following enables the "thin jar" deployment option. -->
-          <dependency>
-            <groupId>org.springframework.boot.experimental</groupId>
-            <artifactId>spring-boot-thin-layout</artifactId>
-            <version>${thin.boot.version}</version>
-          </dependency>
-        </dependencies>
+        <configuration>
+          <mainClass>com.mycomp.myproj.Application</mainClass>
+        </configuration>
       </plugin>
     </plugins>
   </build>
