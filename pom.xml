@@ -24,7 +24,7 @@
 
 
   <properties>
-    <thin.boot.version>1.0.18.BUILD-SNAPSHOT</thin.boot.version>
+    <thin.boot.version>1.0.19.BUILD-SNAPSHOT</thin.boot.version>
   </properties>
 
   <dependencyManagement>
