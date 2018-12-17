@@ -17,7 +17,6 @@
   <modules>
     <module>common</module>
     <module>app</module>
-    <module>app-with-classifiers</module>
     <module>mvnrepo</module>
     <module>no-spring</module>
   </modules>
@@ -50,11 +49,6 @@
       <dependency>
         <groupId>com.mycomp.myproj</groupId>
         <artifactId>myproj-app</artifactId>
-        <version>${project.version}</version>
-      </dependency>
-      <dependency>
-        <groupId>com.mycomp.myproj</groupId>
-        <artifactId>myproj-app-with-classifiers</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

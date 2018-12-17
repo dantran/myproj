@@ -11,6 +11,8 @@
   <artifactId>myproj-app-with-classifiers</artifactId>
 
   <dependencies>
+
+    <!-- ensure classifiers from same GAV to show in thin.properties -->
     <dependency>
       <groupId>com.mycomp.myproj</groupId>
       <artifactId>myproj-common</artifactId>
@@ -21,6 +23,7 @@
       <artifactId>myproj-common</artifactId>
       <classifier>duplicate2</classifier>
     </dependency>
+
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web</artifactId>

@@ -31,6 +31,14 @@
       <version>1.19.1</version>
     </dependency>
 
+
+    <!-- we want thin.properties to show version as 1.0.0.BUILD-SNAPSHOT not 1.0.0.BUILD-timestampXXX-->
+    <dependency>
+      <groupId>org.springframework.boot.experimental</groupId>
+      <artifactId>spring-boot-auto-reflect</artifactId>
+      <version>1.0.0.BUILD-SNAPSHOT</version>
+    </dependency>
+
   </dependencies>
 
   <build>
