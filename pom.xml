@@ -23,7 +23,7 @@
 
 
   <properties>
-    <thin.boot.version>1.0.19.BUILD-SNAPSHOT</thin.boot.version>
+    <thin.boot.version>1.0.20.BUILD-SNAPSHOT</thin.boot.version>
   </properties>
 
   <dependencyManagement>
@@ -49,6 +49,11 @@
       <dependency>
         <groupId>com.mycomp.myproj</groupId>
         <artifactId>myproj-app</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>com.mycomp.myproj</groupId>
+        <artifactId>myproj-app-with-classifiers</artifactId>
         <version>${project.version}</version>
       </dependency>
       <dependency>

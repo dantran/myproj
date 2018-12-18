@@ -46,6 +46,9 @@
       <plugin>
         <groupId>org.springframework.boot.experimental</groupId>
         <artifactId>spring-boot-thin-maven-plugin</artifactId>
+        <configuration>
+          <useBaseVersion>true</useBaseVersion>
+        </configuration>
       </plugin>
       <plugin>
         <groupId>org.springframework.boot</groupId>
