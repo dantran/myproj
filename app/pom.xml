@@ -47,7 +47,7 @@
         <groupId>org.springframework.boot.experimental</groupId>
         <artifactId>spring-boot-thin-maven-plugin</artifactId>
         <configuration>
-          <SnapshotStyle>SNAPSHOT</SnapshotStyle>
+          <snapshotStyle>SNAPSHOT</snapshotStyle>
         </configuration>
       </plugin>
       <plugin>
